@@ -4,7 +4,7 @@ import ChallengeRoutes from "./routes/ChallengeRoutes";
 import cors from "cors";
 import handleError from "./middlewares/handleError";
 
-const app = express();
+export const app = express();
 const apiRoutes = express.Router();
 
 app

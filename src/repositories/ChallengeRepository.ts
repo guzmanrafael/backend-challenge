@@ -3,14 +3,12 @@ import axios from "axios";
 import { CustomError } from "../models/CustomError";
 
 export default class ChallengeRepository implements IChallengeRepository {
-  private url = process.env.URL_API;
-
   async getAllData(resource: string) {
     try {
       const allIDsList = await this.getAllIDs(resource);
 
       const { data, status } = await axios.get(
-        `${this.url}${resource}/${allIDsList}`,
+        `${process.env.URL_API}${resource}/${allIDsList}`,
         {
           headers: {
             Accept: "application/json",
@@ -25,9 +23,9 @@ export default class ChallengeRepository implements IChallengeRepository {
     }
   }
 
-  private async getAllIDs(resource: string) {
+  async getAllIDs(resource: string) {
     try {
-      const { data } = await axios.get(`${this.url}${resource}`);
+      const { data } = await axios.get(`${process.env.URL_API}${resource}`);
 
       const allIDsList = Array.from(
         { length: data.info.count },
