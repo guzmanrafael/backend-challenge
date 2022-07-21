@@ -2,6 +2,7 @@ import { injectable } from "tsyringe";
 import { IChallengeService } from "../interfaces/IChallengeService";
 import ChallengeRepository from "../repositories/ChallengeRepository";
 import {
+  getLocationsPerEpisode,
   getTime,
   searchNumberChars,
 } from "../utils/challenge";
@@ -31,13 +32,25 @@ export default class ChallengeService implements IChallengeService {
 
     const charCounterTime = getTime(timeStart);
 
+    const locationsPerEpisode = getLocationsPerEpisode(
+      dataFromAPI[0],
+      dataFromAPI[1]
+    );
+    const locationsPerEpisodeTime = getTime(timeStart);
+
     return [
       {
         exercise_name: "Char counter",
         time: charCounterTime.executionTime,
         in_time: charCounterTime.in_time,
         results: [locations, episodes, characters],
-      }
+      },
+      {
+        exercise_name: "Episode locations",
+        time: locationsPerEpisodeTime.executionTime,
+        in_time: locationsPerEpisodeTime.in_time,
+        results: locationsPerEpisode,
+      },
     ];
   }
 
