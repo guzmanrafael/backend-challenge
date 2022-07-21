@@ -15,3 +15,13 @@ export function searchNumberChars(
 
   return { char, count, resource };
 }
+
+export function getTime(timeStart: [number, number]) {
+  const [seconds, nanoseconds] = process.hrtime(timeStart);
+  const executionTime = `${seconds}s ${Math.floor(nanoseconds / 1000000)}ms`;
+
+  return {
+    executionTime,
+    in_time: seconds < 3 ? true : false,
+  };
+}
