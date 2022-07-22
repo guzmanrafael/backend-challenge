@@ -31,6 +31,13 @@ URL_API = https://rickandmortyapi.com/api/
 
 `npm run start`
 
+In local environment consume with http get:
+
+[http://localhost:3030/api/challenge](http://localhost:3030/api/challenge)
+Or
+[https://still-gorge-24781.herokuapp.com/api/challenge
+](https://still-gorge-24781.herokuapp.com/api/challenge)
+
 ## Testing
 
 `npm run test`
